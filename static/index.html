@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BunnyTV</title>
+  <style>
+    body { background: #111; color: #eee; font-family: monospace; display: flex; flex-direction: column; align-items: center; padding: 2rem; margin: 0; }
+    h1 { margin-bottom: 1rem; }
+    #video { border: 2px solid #444; max-width: 100%; }
+    #meta { margin-top: 0.75rem; font-size: 0.85rem; color: #aaa; }
+    #status { margin-top: 0.5rem; font-size: 0.8rem; color: #f80; }
+  </style>
+</head>
+<body>
+  <h1>BunnyTV</h1>
+  <img id="video" alt="video stream" />
+  <div id="meta">Waiting for stream…</div>
+  <div id="status">Connecting…</div>
+
+  <script>
+    const img    = document.getElementById('video');
+    const meta   = document.getElementById('meta');
+    const status = document.getElementById('status');
+
+    function connect() {
+      const ws = new WebSocket(`ws://${location.host}/ws`);
+
+      ws.onopen = () => { status.textContent = 'Connected'; };
+
+      ws.onmessage = (event) => {
+        const { image, meta: m } = JSON.parse(event.data);
+        img.src = 'data:image/jpeg;base64,' + image;
+        meta.textContent = `Frame ${m.frame} | ${m.timestamp.toFixed(2)}s | ${m.fps} fps | ${m.width}×${m.height}`;
+      };
+
+      ws.onclose = () => {
+        status.textContent = 'Disconnected — reconnecting in 2s…';
+        setTimeout(connect, 2000);
+      };
+
+      ws.onerror = () => ws.close();
+    }
+
+    connect();
+  </script>
+</body>
+</html>
