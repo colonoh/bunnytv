@@ -5,6 +5,7 @@ description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.133.0",
+    "numpy>=2.4.2",
     "opencv-python>=4.13.0.92",
     "uvicorn[standard]>=0.41.0",
 ]

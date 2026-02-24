@@ -39,6 +39,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
+    { name = "numpy" },
     { name = "opencv-python" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -51,6 +52,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = ">=0.133.0" },
+    { name = "numpy", specifier = ">=2.4.2" },
     { name = "opencv-python", specifier = ">=4.13.0.92" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.41.0" },
 ]
