@@ -1,0 +1,15 @@
+[project]
+name = "bunnytv"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.133.0",
+    "opencv-python>=4.13.0.92",
+    "uvicorn[standard]>=0.41.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.2",
+]
