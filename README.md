@@ -1,5 +1,12 @@
 # bunnytv
 
+``` shell
+uv run python main.py
+```
+
+http://localhost:8000/static/index.html
+
+
 
 ## Components
 source: video file (big buck bunny)
