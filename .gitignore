@@ -209,3 +209,5 @@ __marimo__/
 # Project-specific files
 ffmpeg.exe
 BigBuckBunny*.m*
+.DS_Store
+output/
