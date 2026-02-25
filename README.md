@@ -4,6 +4,7 @@
 1. Install [ffmpeg](https://www.ffmpeg.org/)
 2. `wget https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_640x360.m4v`
 3. `uv run python main.py`
+4. (in a different terminal) `uv run python -m http.server 8000`
 4. Go to http://localhost:8000/static/index.html
 
 
